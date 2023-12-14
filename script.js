@@ -1,17 +1,20 @@
+// Selecting DOM elements
 const statusDisplay = document.querySelector('.game--status');
 const x_score = document.querySelector('.x-score');
 const y_score = document.querySelector('.y-score');
 var scoreBoard = document.querySelector('.score-board');
 
+// Variables for tracking scores
 var scoreScreen = false;
-
 currentXScore = 0;
 currentYScore = 0;
 
+// Game state variables
 let gameActive = true;
 let currentPlayer = "X";
 let gameState = ["", "", "", "", "", "", "", "", ""];
 
+// Winning conditions for the game
 const winningConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -23,16 +26,20 @@ const winningConditions = [
     [2, 4, 6]
 ];
 
+// Functions to display messages
 const drawMessage = () => `Game ended in a draw!`;
 const currentPlayerTurn = () => `${currentPlayer} take the turn! ⏳`;
 
+// Initial message display
 statusDisplay.innerHTML = currentPlayerTurn();
 
+// Function to handle player change
 function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
 }
 
+// Function to display winning message and update scores
 function winningMessage(){
     if(currentPlayer == "X"){
         currentXScore+=1;
@@ -43,6 +50,7 @@ function winningMessage(){
     return `Player ${currentPlayer} has won!🎯`;
 };
 
+// Function to validate game result
 function handleResultValidation() {
     let roundWon = false;
     for(let i = 0; i <= 7; i++) {
@@ -74,12 +82,13 @@ function handleResultValidation() {
     handlePlayerChange();
 }
 
+// Function to handle cell played
 function handleCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
 }
 
-
+// Function to handle cell click event
 function handleCellClick(clickedCellEvent) {
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
@@ -91,6 +100,7 @@ function handleCellClick(clickedCellEvent) {
     handleResultValidation();
 }
 
+// Function to restart the game
 function handleRestartGame() {
     gameActive = true;
     currentPlayer = "X";
@@ -99,6 +109,7 @@ function handleRestartGame() {
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
 
+// Function to toggle the score board
 function toggleScoreBoard(){
     x_score.innerHTML = `${currentXScore}`;
     y_score.innerHTML = `${currentYScore}`;
@@ -108,7 +119,8 @@ function toggleScoreBoard(){
     }
 }
 
-document.querySelector('.score-button').addEventListener('click',toggleScoreBoard);
-document.querySelector('.close').addEventListener('click',toggleScoreBoard);
+// Event listeners for score board and game elements
+document.querySelector('.score-button').addEventListener('click', toggleScoreBoard);
+document.querySelector('.close').addEventListener('click', toggleScoreBoard);
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
 document.querySelector('.game--restart').addEventListener('click', handleRestartGame);
