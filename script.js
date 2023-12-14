@@ -22,3 +22,8 @@ const winningConditions = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+
+const drawMessage = () => `Game ended in a draw!`;
+const currentPlayerTurn = () => `${currentPlayer} take the turn! ⏳`;
+
+statusDisplay.innerHTML = currentPlayerTurn();
