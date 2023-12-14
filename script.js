@@ -27,3 +27,8 @@ const drawMessage = () => `Game ended in a draw!`;
 const currentPlayerTurn = () => `${currentPlayer} take the turn! ⏳`;
 
 statusDisplay.innerHTML = currentPlayerTurn();
+
+function handlePlayerChange() {
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    statusDisplay.innerHTML = currentPlayerTurn();
+}
