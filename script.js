@@ -98,3 +98,17 @@ function handleRestartGame() {
     statusDisplay.innerHTML = currentPlayerTurn();
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
+
+function toggleScoreBoard(){
+    x_score.innerHTML = `${currentXScore}`;
+    y_score.innerHTML = `${currentYScore}`;
+    if(scoreBoard){
+        scoreBoard.style.zIndex = scoreScreen? -1 : 2;
+        scoreScreen = !scoreScreen;
+    }
+}
+
+document.querySelector('.score-button').addEventListener('click',toggleScoreBoard);
+document.querySelector('.close').addEventListener('click',toggleScoreBoard);
+document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
+document.querySelector('.game--restart').addEventListener('click', handleRestartGame);
