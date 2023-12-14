@@ -160,3 +160,23 @@ th {
     backdrop-filter: blur(2px);
     z-index: 0;
 }
+
+h3{
+    font-weight: lighter;
+    color:white;
+}
+
+.score-button{
+    cursor: pointer;
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    color:white;
+}
+
+.close{
+    cursor: pointer;
+    position: absolute;
+    top:0;
+    left: 15px;
+}
