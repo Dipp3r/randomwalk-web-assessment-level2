@@ -73,3 +73,20 @@ function handleResultValidation() {
 
     handlePlayerChange();
 }
+
+function handleCellPlayed(clickedCell, clickedCellIndex) {
+    gameState[clickedCellIndex] = currentPlayer;
+    clickedCell.innerHTML = currentPlayer;
+}
+
+
+function handleCellClick(clickedCellEvent) {
+    const clickedCell = clickedCellEvent.target;
+    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
+
+    if(gameState[clickedCellIndex] !== "" || !gameActive)
+        return;
+
+    handleCellPlayed(clickedCell, clickedCellIndex);
+    handleResultValidation();
+}
