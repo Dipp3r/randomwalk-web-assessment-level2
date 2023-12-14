@@ -106,3 +106,57 @@ body {
     color: #353535;
     transition: background-color 0.5s ease;
 }
+
+
+.score-div{
+    border: 1px solid #bababa5d;
+    position: relative;
+    background-color: #353535;
+    padding: 20px;
+    min-height: 20%;
+    min-width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-radius: 20px;
+    align-items: center;
+}
+
+table {
+    min-width: 60%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+td{
+    color: white;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.score-table{
+    z-index: 2;
+}
+  
+
+.score-board{
+    background-color: rgba(24, 24, 24, 0.851);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    z-index: 0;
+}
